@@ -1,0 +1,4 @@
+INDEX VERSION 1.126+/home/infinity/Algo/standard_algo_java/.metadata/.plugins/org.eclipse.jdt.core
+2756195707.index
+1619325265.index
+2917739849.index

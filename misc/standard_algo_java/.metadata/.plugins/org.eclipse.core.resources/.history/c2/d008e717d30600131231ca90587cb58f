@@ -1,0 +1,38 @@
+package jp.co.wap.exam.lib;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+/**
+* This class represents interval.
+* YOU MUST NOT MODIFY THIS CLASS. (Use this as it is)
+* You do not have to submit this class. (Interval class is to be provided in our scoring system.)
+*/
+public class Interval {
+/**
+* It represents Time of Hour and Minute.
+*/
+private static class Time {
+final int hour;
+final int minute;
+public Time(int hour, int minute) {
+this.hour = hour;
+this.minute = minute;
+}
+@Override
+public String toString() {
+return String.format("%02d:%02d", hour, minute);
+}
+@Override
+public int hashCode() {
+return toString().hashCode();
+}
+@Override
+public boolean equals(Object obj) {
+if (!(obj instanceof Time)) {
+return false;
+}
+Time other = (Time) obj;
+return (this.hour == other.hour && this.minute == other.minute);
+}
+}
+/** Initial point of interval. */
+private final Time begin;

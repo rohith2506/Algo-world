@@ -1,0 +1,39 @@
+What is a file system??/
+
+
+
+how is it organized:-
+
+struct datablock   { char datablock[MAX];}
+
+struct Inode  {
+		vector<int> datablocks;
+}
+
+struct metadata{
+		char last_modified;
+		char last_attributes;
+}
+
+
+map<string,inode *> fbase;
+
+struct filename{
+	vector<inode *> nodes;
+	Metadata metadata;
+}
+
+
+The POSIX standard mandates filesystem behavior that is strongly influenced by traditional UNIX filesystems. Regular files must have the following attributes:
+The size of the file in bytes.
+Device ID (this identifies the device containing the file).
+The User ID of the file's owner.
+The Group ID of the file.
+The file mode which determines the file type and how the file's owner, its group, and others can access the file.
+Additional system and user flags to further protect the file (limit its use and modification).
+Timestamps telling when the inode itself was last modified (ctime, inode change time), the file content last modified (mtime, modification time), and last accessed (atime, access time).
+A link count telling how many hard links point to the inode.
+Pointers to the disk blocks that store the file's contents (see inode pointer structure).
+The stat system call retrieves a file's inode number and some of the information in the inode.
+
+

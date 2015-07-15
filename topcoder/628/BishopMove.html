@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+
+	<style type="text/css">
+		body { font-family: Helvetica, Arial, Verdana, sans-serif; }
+		.heading { font-weight: bold; font-size: 28px; text-align: center; }
+		.section { padding-top: 10px; }
+		.section .section-title { font-weight: bold; font-size: 20px; color: grey; }
+        .problem-intro { padding-left: 20px; }
+        note, user-constraint { padding-left: 20px; }
+		type {
+			font-weight: bold;
+			font-family: monospace;
+		}
+		img {
+			float: none;
+			display: block;
+			width: 200px;
+			height: auto;
+			margin: 10px;
+			border: 0px solid #ccc;
+		}
+		ul {
+			list-style-type: none;
+			padding: 0px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		ul.constraints li:before {
+			content: "-";
+			font-size: 16px;
+			font-family: monospace;
+			position:relative;
+			margin-left: 0px; /* optional, for multiline li element */
+			left: 10px;
+		}
+		ul.notes li:before {
+			content: "~";
+			font-size: 16px;
+			font-family: monospace;
+			font-weight: normal;
+			position:relative;
+			margin-left: 0px; /* optional, for multiline li element */
+			left: 10px;
+		}
+
+		li.testcase {
+			display: flex;
+			line-height: 16px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		li.testcase div.testcase-no {
+            min-width: 16px;
+			width: 16px;
+			height: 16px;
+			font-size: 16px;
+			line-height: 16px;
+			padding: 8px;
+			margin-right: 10px;
+			border-radius: 100%;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top;
+			border: 2px solid #ddd;
+			color: grey;
+		}
+		li.testcase span {
+			vertical-align: middle; 
+			text-align: center;
+			height: 15px;
+			line-height: 16px;
+			min-width: 45px;
+			border-radius: 5px;
+			padding: 0px;
+			padding-left: 5px;
+			padding-right: 5px;
+			margin-right: 10px;
+			display: inline-block;
+		}
+		li.testcase > .testcase-content > div { padding-bottom: 8px; }
+		li.testcase .tag {
+			background: #545454;
+			color: white;
+			font-family: Georgia;
+			font-size: 10px;
+			text-align: center;
+		}
+		li.testcase .testcase-input .tag { visibility: hidden; }
+		li.testcase .testcase-input .tag:first-child { visibility: visible; }
+		li.testcase .data {
+			background: #eee;
+			font-family: monospace;
+		}
+        li.testcase .testcase-comment {
+            margin: 0;
+            padding-left: 5px;
+        }
+        .testcase-comment p:first-child { margin-top: 0; }
+        .testcase-comment p:last-child { margin-bottom: 0; }
+	</style>
+
+    <title>Topcoder - SRM 628 - Problem 250</title>
+</head>
+
+<body>
+	<div class="heading">
+        SRM 628 Div 2 - Problem 250 <br/>
+        BishopMove
+    </div>
+
+	<hr/>
+
+    <!-- Problem Statemnt -->
+    <div class="section">
+        <div class="section-title">Problem Statement</div>
+        <div class="problem-intro">
+            <intro escaped="1"><p>Janusz is learning how to play chess.
+He is using the standard chessboard with 8 rows and 8 columns.
+Both the rows and the columns are numbered 0 through 7.
+Thus, we can describe each cell using its two coordinates: (row, column).</p>
+
+<p>Janusz recently learned about one of the chess pieces: the bishop.
+The bishop is a piece that moves diagonally by an arbitrary number of cells.
+Formally, if a bishop is currently on the cell (r,c) of an empty chessboard,
+the set of all cells reachable in a single move contains the following cells:
+<ul>
+<li>All cells of the form (r+k,c+k), where k is a positive integer.</li>
+<li>All cells of the form (r+k,c-k), where k is a positive integer.</li>
+<li>All cells of the form (r-k,c+k), where k is a positive integer.</li>
+<li>All cells of the form (r-k,c-k), where k is a positive integer.</li>
+</ul>
+(Of course, the bishop's destination must always be a valid cell on the chessboard.)</p>
+
+<p>Janusz took an empty chessboard and he placed a single bishop onto the cell (<b>r1</b>,<b>c1</b>).
+He now wants to move it to the cell (<b>r2</b>,<b>c2</b>) using as few moves as possible.</p>
+
+<p>You are given the <type>int</type>s <b>r1</b>, <b>c1</b>, <b>r2</b>, and <b>c2</b>.
+Compute and return the smallest number of moves a bishop needs to get from (<b>r1</b>,<b>c1</b>) to (<b>r2</b>,<b>c2</b>).
+If it is impossible for a bishop to reach the target cell, return -1 instead.</p></intro>
+        </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="section">
+        <div class="section-title">Notes</div>
+        <ul class="notes">
+                </ul>
+    </div>
+
+    <!-- Constraints -->
+    <div class="section">
+        <div class="section-title">Constraints</div>
+        <ul class="constraints">
+                    <li><user-constraint escaped="1"><b>r1,c1,r2,c2</b> will be between 0 and 7, inclusive.</user-constraint></li>
+                </ul>
+    </div>
+
+    <!-- Test cases -->
+    <div class="section">
+        <div class="section-title">Test cases</div>
+        <ul class="testcases">
+                        <li class="testcase">
+                <div class="testcase-no">0</div>
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                    
+                                            <span class="tag">input</span>
+                        <span class="data"><b>r1</b>: 4</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>c1</b>: 6</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>r2</b>: 7</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>c2</b>: 3</span>
+                        <br/>
+                                        </div>
+                    <div>
+                        <span class="tag">output</span>
+                        <span class="data">1</span>
+                    </div>
+                                        <div style="display: flex;">
+                        <span class="tag">comment</span>
+                        <div class="testcase-comment">The bishop can go from (4,6) to (7,3) in a single move.</div>
+                    </div>
+                                    </div>
+            </li>
+                        <li class="testcase">
+                <div class="testcase-no">1</div>
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                    
+                                            <span class="tag">input</span>
+                        <span class="data"><b>r1</b>: 2</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>c1</b>: 5</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>r2</b>: 2</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>c2</b>: 5</span>
+                        <br/>
+                                        </div>
+                    <div>
+                        <span class="tag">output</span>
+                        <span class="data">0</span>
+                    </div>
+                                        <div style="display: flex;">
+                        <span class="tag">comment</span>
+                        <div class="testcase-comment">The bishop is already where it should be, no moves are necessary.</div>
+                    </div>
+                                    </div>
+            </li>
+                        <li class="testcase">
+                <div class="testcase-no">2</div>
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                    
+                                            <span class="tag">input</span>
+                        <span class="data"><b>r1</b>: 1</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>c1</b>: 3</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>r2</b>: 5</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>c2</b>: 5</span>
+                        <br/>
+                                        </div>
+                    <div>
+                        <span class="tag">output</span>
+                        <span class="data">2</span>
+                    </div>
+                                        <div style="display: flex;">
+                        <span class="tag">comment</span>
+                        <div class="testcase-comment">In the first move Janusz can move the bishop to the cell (4,6).
+Please note that this is the largest possible return value: whenever there is a solution, there is a solution that uses at most two moves.</div>
+                    </div>
+                                    </div>
+            </li>
+                        <li class="testcase">
+                <div class="testcase-no">3</div>
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                    
+                                            <span class="tag">input</span>
+                        <span class="data"><b>r1</b>: 4</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>c1</b>: 6</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>r2</b>: 7</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>c2</b>: 4</span>
+                        <br/>
+                                        </div>
+                    <div>
+                        <span class="tag">output</span>
+                        <span class="data">-1</span>
+                    </div>
+                                        <div style="display: flex;">
+                        <span class="tag">comment</span>
+                        <div class="testcase-comment">If the bishop starts at (4,6), it can never reach (7,4).</div>
+                    </div>
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+
+    <hr>
+
+    This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+</body>
+</html>

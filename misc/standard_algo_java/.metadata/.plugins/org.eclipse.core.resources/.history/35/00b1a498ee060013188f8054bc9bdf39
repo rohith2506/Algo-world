@@ -1,0 +1,98 @@
+package jp.co.wap.exam;
+import java.util.Arrays;
+import java.util.List;
+import jp.co.wap.exam.lib.Interval;
+
+public class Problem1 {
+
+	public static void testProblem1(){
+
+	Interval interval1 = new Interval("08:00", "12:00");
+	Interval interval2 = new Interval("06:00", "09:00");
+	Interval interval3 = new Interval("11:00", "13:30");
+	List<Interval> figure1 = Arrays.asList(interval1, interval2, interval3);
+	System.out.println(getMaxIntervalOverlapCount(figure1));
+	// example: Figure 2
+
+	List<Interval> figure2 = Arrays.asList(new Interval("09:00", "12:30"),
+	new Interval("06:00", "09:30"), new Interval("12:00", "14:30"),
+	new Interval("10:00", "10:30"), new Interval("11:00", "13:30"));
+	System.out.println(getMaxIntervalOverlapCount(figure2));
+	}
+			
+public static int getMaxIntervalOverlapCount(List<Interval> intervals) {
+
+	
+	
+	int n = intervals.size();
+	
+	int start[] = new int[n];
+	
+	for(int i=0;i<(2*n);i++)
+		start[i]=0;
+	
+	for(int i=0;i<(2*n);i = i+2){
+		int sthr = intervals.get(i).getBeginHour();
+		int stmin = intervals.get(i).getBeginMinute();
+	}
+	
+	int end[] = new int[n];
+	
+	for(int i=0;i<(2*n);i++)
+		end[i]=0;
+	
+	for(int i=0;i<(2*n);i = i+2){
+		int endhr = intervals.get(i).getEndHour();
+		int endmin = intervals.get(i).getEndMinute();
+	}
+	
+	
+	
+	
+	
+	
+	Arrays.sort(array);
+
+	for(int i=0;i<array.length;i++)
+		System.out.println(array[i]);
+	
+	int mini = array[0];
+	int maxi = array[n-1];
+	
+	int buff[] = new int[maxi-mini+1];
+	
+	int d;
+	
+	for(int i=0;i<array.length-1;i++){
+		int diff = array[i+1] - array[i];
+	}
+	
+	
+	
+		
+	
+	//try to find the minimum and maximum in intervals 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	return 0;
+	}
+
+public static void main(String[] args){
+	testProblem1();
+}
+
+
+}

@@ -1,0 +1,76 @@
+package jp.co.wap.exam;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import jp.co.wap.exam.lib.Interval;
+
+public class Problem2 {
+	
+	class time{
+		private int stime;
+		private int etime;
+		
+		public time(int starttime, int endtime) {
+			this.stime = starttime;
+			this.etime = endtime;
+		}
+		
+		public int getstime(){
+			return this.stime;
+		}
+	
+		public int getetime(){
+			return this.etime;
+		}
+		
+		
+	}
+
+	public int getMaxWorkingTime(List<Interval> intervals) {
+		
+		//weighted activity selection method
+	
+		int n = intervals.size();
+		int weight[] = new int[n];
+		
+		ArrayList<time> arr = new ArrayList<time>();
+		
+		for(int i=0;i<intervals.size();i++){
+			int sthr = intervals.get(i).getBeginHour();
+			int stmin = intervals.get(i).getBeginMinute();
+			int endhr = intervals.get(i).getEndHour();
+			int endmin = intervals.get(i).getEndMinute();	
+			weight[i] = ((endhr * 60) + endmin) - ((sthr * 60) + stmin);
+			
+			int starttime = ((sthr * 60) + stmin);
+			int endtime = ((endhr * 60) + endmin);
+			arr.add(new time(starttime,endtime));
+		}
+		
+		//now arr contains start time and end time and weight contains weight of the time respectively
+		
+		Collections.sort(arr, new Comparator<time>() {
+		    public int compare(time p1, time p2) {
+		        return p1.gettime() - p2.gettime();
+		    }
+		});
+		
+		
+		for(int i=0;i<arr.size();i++){
+			System.out.println(arr[i].get)
+		}
+	
+		
+		
+		
+		
+		
+		
+		
+		
+				
+		return 0;
+	}
+}

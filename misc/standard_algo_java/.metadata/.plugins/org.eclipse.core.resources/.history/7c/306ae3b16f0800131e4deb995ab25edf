@@ -1,0 +1,70 @@
+package jp.co.wap.exam;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+public class PersistentQueue<E> {
+	private List<E> front;
+	
+		public PersistentQueue() {
+// modify this constructor if necessary, but do not remove default constructor
+			front = new ArrayList<E>();
+		}
+		
+		private PersistentQueue(List<E> front) {
+			// modify or remove this constructor if necessary
+			this.front = front;
+		}
+		
+		// add other constructors if necessary
+
+		public <T> PersistentQueue<E> enqueue(E e) {
+			if (e == null) {
+				throw new IllegalArgumentException();
+				}
+			
+			List<E> front1 = new ArrayList<E>(front);
+			front1.add(e);
+	   
+		    return new PersistentQueue<E>(front1);
+		}
+		
+		
+		public PersistentQueue<E> dequeue() {
+
+			if (front.isEmpty()) {
+				throw new NoSuchElementException();
+			}
+			List<E> clone = new ArrayList<E>(front);
+			clone.remove(0);
+			return new PersistentQueue<E>(clone);
+		}
+/**
+* Looks at the object which is the head of this queue without removing it from the queue.
+* <pre>
+* e.g.
+*
+When this queue represents the queue (7, 1, 3, 3, 5, 1),
+*
+this method returns 7 and this object still represents the queue (7, 1, 3, 3, 5, 1)
+* </pre>
+* If the queue is empty, throws java.util.NoSuchElementException.
+* @return
+* @throws java.util.NoSuchElementException
+*/
+public E peek() {
+// modify this method if needed
+if (queue.isEmpty()) {
+throw new NoSuchElementException();
+}
+return queue.get(0);
+}
+/**
+* Returns the number of objects in this queue.
+* @return
+*/
+public int size() {
+// modify this method if necessary
+return queue.size();
+}
+}

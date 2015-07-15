@@ -1,0 +1,8 @@
+You should ask some clarification questions before answering. 
+Are the machines identical? 
+Do they have same "max connection limit"? 
+All the incoming requests to the load balancer takes same time to complete, i.e., fixed? 
+
+Lets say, we've three machines A,B,C. Now, the job of load balancer is to make sure the load is uniformly distributed across all the machines and same time it doesn't overload the machines. This means, the load balancer should consider the max processing power of each machine (i.e., the max connections that a machine can support). Typically its not same for each machine, the hardware configuration will vary between machines (or each machine may run additional processes). 
+Above data are almost static., we've to consider an another important runtime parameter, the time taken for a request (or number of active connections on a machine), also must to be to balance the load. 
+The naive approach is to use round robin method (just distribute one request to each machine circularly). Otherwise maintain the above mentioned details in a bucket and distribute the load. When we reach the bucket capacity, keep the incoming requests on hold (may be in a queue) instead of overloading the machines (that will crash the all machines). 

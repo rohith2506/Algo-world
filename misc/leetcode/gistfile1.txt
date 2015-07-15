@@ -1,0 +1,4 @@
+This consists of common interview questions i need to see before i go for an interview:-
+
+1) https://github.com/sagivo/algorithms
+2) http://www.ardendertat.com

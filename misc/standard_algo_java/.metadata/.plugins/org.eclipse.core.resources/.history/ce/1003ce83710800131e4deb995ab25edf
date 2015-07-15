@@ -1,0 +1,63 @@
+package jp.co.wap.exam;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+public class PersistentQueue<E> {
+	private List<E> front;
+	
+		public PersistentQueue() {
+// modify this constructor if necessary, but do not remove default constructor
+			front = new ArrayList<E>();
+		}
+		
+		private PersistentQueue(List<E> front) {
+			// modify or remove this constructor if necessary
+			this.front = front;
+		}
+		
+		// add other constructors if necessary
+
+		public <T> PersistentQueue<E> enqueue(E e) {
+			if (e == null) {
+				throw new IllegalArgumentException();
+				}
+			
+			List<E> front1 = new ArrayList<E>(front);
+			front1.add(e);
+	   
+		    return new PersistentQueue<E>(front1);
+		}
+		
+		
+		public PersistentQueue<E> dequeue() {
+
+			if (front.isEmpty()) {
+				throw new NoSuchElementException();
+			}
+			List<E> clone = new ArrayList<E>(front);
+			clone.remove(0);
+			return new PersistentQueue<E>(clone);
+		}
+
+		public E peek() {
+			// modify this method if needed
+			if (front.isEmpty()) {
+				throw new NoSuchElementException();
+			}
+			return front.get(0);
+		}
+
+		public int size() {
+			return front.size();
+		}
+		
+		public static void main(String[] args){
+			PersistentQueue<Integer> p = new PersistentQueue<Integer>();
+			
+			for(int i=1;i<=10;i++){
+				 p.enqueue(i+1);
+			}
+			//p.dequeue();			
+		}
+	}
