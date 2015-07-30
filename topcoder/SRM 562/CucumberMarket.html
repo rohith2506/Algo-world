@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+
+	<style type="text/css">
+		body { font-family: Helvetica, Arial, Verdana, sans-serif; }
+		.heading { font-weight: bold; font-size: 28px; text-align: center; }
+		.section { padding-top: 10px; }
+		.section .section-title { font-weight: bold; font-size: 20px; color: grey; }
+        .problem-intro { padding-left: 20px; }
+        note, user-constraint { padding-left: 20px; }
+		type {
+			font-weight: bold;
+			font-family: monospace;
+		}
+		img {
+			float: none;
+			display: block;
+			width: 200px;
+			height: auto;
+			margin: 10px;
+			border: 0px solid #ccc;
+		}
+		ul {
+			list-style-type: none;
+			padding: 0px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		ul.constraints li:before {
+			content: "-";
+			font-size: 16px;
+			font-family: monospace;
+			position:relative;
+			margin-left: 0px; /* optional, for multiline li element */
+			left: 10px;
+		}
+		ul.notes li:before {
+			content: "~";
+			font-size: 16px;
+			font-family: monospace;
+			font-weight: normal;
+			position:relative;
+			margin-left: 0px; /* optional, for multiline li element */
+			left: 10px;
+		}
+
+		li.testcase {
+			display: flex;
+			line-height: 16px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		li.testcase div.testcase-no {
+            min-width: 16px;
+			width: 16px;
+			height: 16px;
+			font-size: 16px;
+			line-height: 16px;
+			padding: 8px;
+			margin-right: 10px;
+			border-radius: 100%;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top;
+			border: 2px solid #ddd;
+			color: grey;
+		}
+		li.testcase span {
+			vertical-align: middle; 
+			text-align: center;
+			height: 15px;
+			line-height: 16px;
+			min-width: 45px;
+			border-radius: 5px;
+			padding: 0px;
+			padding-left: 5px;
+			padding-right: 5px;
+			margin-right: 10px;
+			display: inline-block;
+		}
+		li.testcase > .testcase-content > div { padding-bottom: 8px; }
+		li.testcase .tag {
+			background: #545454;
+			color: white;
+			font-family: Georgia;
+			font-size: 10px;
+			text-align: center;
+		}
+		li.testcase .testcase-input .tag { visibility: hidden; }
+		li.testcase .testcase-input .tag:first-child { visibility: visible; }
+		li.testcase .data {
+			background: #eee;
+			font-family: monospace;
+		}
+        li.testcase .testcase-comment {
+            margin: 0;
+            padding-left: 5px;
+        }
+        .testcase-comment p:first-child { margin-top: 0; }
+        .testcase-comment p:last-child { margin-bottom: 0; }
+	</style>
+
+    <title>Topcoder - SRM 562 - Problem 250</title>
+</head>
+
+<body>
+	<div class="heading">
+        SRM 562 Div 2 - Problem 250 <br/>
+        CucumberMarket
+    </div>
+
+	<hr/>
+
+    <!-- Problem Statemnt -->
+    <div class="section">
+        <div class="section-title">Problem Statement</div>
+        <div class="problem-intro">
+            <intro escaped="1">
+<p>Cucumber Boy is young and loves cucumbers.  Therefore, Cucumber Boy will go to the cucumber market to buy some cucumbers.</p>
+<p></p>
+<p>Different cucumbers may have different costs.  For each i, buying the i-th cucumber (0-based index) costs <b>price</b>[i] yen.</p>
+<p></p>
+<p>Cucumber Boy's mother gave him <b>budget</b> yen.  However, he does not understand money well.</p>
+<p>He just chooses some <b>k</b> unique cucumbers he likes.  If the total price of the chosen cucumbers is not greater than <b>budget</b> yen, he can buy them, otherwise he cannot.</p>
+<p></p>
+<p>You are given the <type>int[]</type> <b>price</b>, the <type>int</type> <b>budget</b> and the <type>int</type> <b>k</b>.  Your method must return &quot;YES&quot; (quotes for clarity) if Cucumber Boy can buy any set of <b>k</b> unique cucumbers, and &quot;NO&quot; if there is some set of <b>k</b> cucumbers that is too expensive for him.</p>
+
+</intro>
+        </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="section">
+        <div class="section-title">Notes</div>
+        <ul class="notes">
+                </ul>
+    </div>
+
+    <!-- Constraints -->
+    <div class="section">
+        <div class="section-title">Constraints</div>
+        <ul class="constraints">
+                    <li><user-constraint escaped="1"><b>price</b> will contain between 1 and 9 elements, inclusive.</user-constraint></li>
+                    <li><user-constraint escaped="1">Each element of <b>price</b> will be between 1 and 1000, inclusive.</user-constraint></li>
+                    <li><user-constraint escaped="1"><b>budget</b> will be between 1 and 10000, inclusive.</user-constraint></li>
+                    <li><user-constraint escaped="1"><b>k</b> will be between 1 and the number of elements in <b>price</b>, inclusive.</user-constraint></li>
+                </ul>
+    </div>
+
+    <!-- Test cases -->
+    <div class="section">
+        <div class="section-title">Test cases</div>
+        <ul class="testcases">
+                        <li class="testcase">
+                <div class="testcase-no">0</div>
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                    
+                                            <span class="tag">input</span>
+                        <span class="data"><b>price</b>: { 1000, 1, 10, 100 }</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>budget</b>: 1110</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>k</b>: 3</span>
+                        <br/>
+                                        </div>
+                    <div>
+                        <span class="tag">output</span>
+                        <span class="data">"YES"</span>
+                    </div>
+                                        <div style="display: flex;">
+                        <span class="tag">comment</span>
+                        <div class="testcase-comment"><p>There are 4 choices.</p>
+<ul>
+<li>If he chooses cucumbers 0, 1, and 2, the total price will be 1000+1+10 = 1011 yen.</li>
+<li>If he chooses cucumbers 0, 1, and 3, the total price will be 1000+1+100 = 1101 yen.</li>
+<li>If he chooses cucumbers 0, 2, and 3, the total price will be 1000+10+100 = 1110 yen.</li>
+<li>If he chooses cucumbers 1, 2, and 3, the total price will be 1+10+100 = 111 yen.</li>
+</ul>
+<p>The result is &quot;YES&quot;, because Cucumber Boy can buy any set of <b>k</b> unique cucumbers.</p></div>
+                    </div>
+                                    </div>
+            </li>
+                        <li class="testcase">
+                <div class="testcase-no">1</div>
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                    
+                                            <span class="tag">input</span>
+                        <span class="data"><b>price</b>: { 1000, 1, 10, 100 }</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>budget</b>: 1109</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>k</b>: 3</span>
+                        <br/>
+                                        </div>
+                    <div>
+                        <span class="tag">output</span>
+                        <span class="data">"NO"</span>
+                    </div>
+                                        <div style="display: flex;">
+                        <span class="tag">comment</span>
+                        <div class="testcase-comment"><p>This case is the same as the example 0, except for the value of <b>budget</b>. </p>
+<p></p>
+<p>If he chooses cucumbers 0, 2, and 3, the total price will be 1000+10+100 = 1110 yen.</p>
+<p> 1110 yen is greater than the budget therefore the result is &quot;NO&quot;.</p></div>
+                    </div>
+                                    </div>
+            </li>
+                        <li class="testcase">
+                <div class="testcase-no">2</div>
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                    
+                                            <span class="tag">input</span>
+                        <span class="data"><b>price</b>: { 33, 4 }</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>budget</b>: 33</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>k</b>: 1</span>
+                        <br/>
+                                        </div>
+                    <div>
+                        <span class="tag">output</span>
+                        <span class="data">"YES"</span>
+                    </div>
+                                    </div>
+            </li>
+                        <li class="testcase">
+                <div class="testcase-no">3</div>
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                    
+                                            <span class="tag">input</span>
+                        <span class="data"><b>price</b>: { 1, 1, 1, 1, 1, 1 }</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>budget</b>: 2</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>k</b>: 4</span>
+                        <br/>
+                                        </div>
+                    <div>
+                        <span class="tag">output</span>
+                        <span class="data">"NO"</span>
+                    </div>
+                                    </div>
+            </li>
+                        <li class="testcase">
+                <div class="testcase-no">4</div>
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                    
+                                            <span class="tag">input</span>
+                        <span class="data"><b>price</b>: { 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000 }</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>budget</b>: 10000</span>
+                        <br/>
+                                            <span class="tag">input</span>
+                        <span class="data"><b>k</b>: 9</span>
+                        <br/>
+                                        </div>
+                    <div>
+                        <span class="tag">output</span>
+                        <span class="data">"YES"</span>
+                    </div>
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+
+    <hr>
+
+    This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+</body>
+</html>
