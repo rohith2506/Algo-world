@@ -14,16 +14,24 @@ class PlaneGame:
 	def rotate(self, points):
 		res = 0
 		for i in range(0, len(points)):
-			x1, y1 = points[i]
-			for j in range(0, len(points)):
-				if i == j: continue
-				x, y = points[j]
-				if x == x1: angle = 90
-				else:
-					slope = (y - y1) * 1.0 / (x - x1)
-					angle = math.degrees(math.atan(slope))
-				angle_set = self.move_by_angle(points, angle)
-				res = max(res, self.get_count(angle_set))
+			x,y = points[i]
+			angle = math.degrees(math.atan(y/x)) if x != 0 else 90
+			if angle >= 0 and angle < 90:
+				xy1 = self.move_by_angle(points, angle)
+				xy2 = self.move_by_angle(points, 90 - angle)
+				res = max(res, self.get_count(xy1), self.get_count(xy2))
+			elif angle >= 90 and angle < 180:
+				xy3 = self.move_by_angle(points, angle - 90)
+				xy4 = self.move_by_angle(points, 180 - angle)
+				res = max(res, self.get_count(xy3), self.get_count(xy4))
+			elif angle >= 180 and angle < 270:
+				xy5 = self.move_by_angle(points, angle - 180)
+				xy6 = self.move_by_angle(points, 270 - angle)
+				res = max(res, self.get_count(xy5), self.get_count(xy6))
+			else:
+				xy7 = self.move_by_angle(points, angle - 270)
+				xy8 = self.move_by_angle(points, 360 - angle)
+				res = max(res, self.get_count(xy7), self.get_count(xy8))
 		return res
 
 	def get_count(self, values):
